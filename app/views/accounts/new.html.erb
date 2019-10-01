@@ -4,12 +4,12 @@
       <h3>Create Account</h3>
     </div>
   </div>
-  <% if @account.errors %>
-  <ul>
-    <% @account.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+  <% flash.each do |key, values| %>
+    <div class="row justify-content-center">
+      <% values.each do |value| %>
+        <div class="col-auto alert alert-<%= key %>" role="alert"><%= value %></div>
+      <% end %>
+    </div>
   <% end %>
   <%= form_with model: @account do |f|%>
     <div class="row justify-content-center">

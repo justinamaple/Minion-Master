@@ -8,9 +8,11 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
+      flash[:primary] = "Log In Success!"
       redirect_to accounts_path
     else
-      render :new
+      flash[:secondary] = @account.errors.full_messages
+      redirect_to new_account_path
     end
   end
 

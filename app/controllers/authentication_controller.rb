@@ -5,7 +5,8 @@ class AuthenticationController < ActionController::Base
       session[:account_id] = @account.id
       redirect_to @account
     else
-      redirect_to characters_path
+      flash[:secondary] = "Email and Password combination was incorrect."
+      redirect_to accounts_path
     end
   end
 
