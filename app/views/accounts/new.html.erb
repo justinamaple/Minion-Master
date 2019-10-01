@@ -1,10 +1,17 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-med">  
-      <h3>Sign in</h3>
+      <h3>Create Account</h3>
     </div>
   </div>
-  <%= form_with url: login_path do |f|%>
+  <% if @account.errors %>
+  <ul>
+    <% @account.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <%= form_with model: @account do |f|%>
     <div class="row justify-content-center">
       <div class="col-md-8">  
         <%= f.label :email %>
@@ -27,28 +34,19 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-8">  
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1">Remember me</label>
-        </div>
+        <%= f.label :password_confirmation %>
+        <%= f.text_field :password_confirmation,
+          class: 'form-control border',
+          type: 'password',
+          placeholder: 'Confirm Password'
+        %>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <%= f.submit 'Sign In', class: 'btn btn-primary btn-block' %>
+        <%= f.submit 'Create Account', class: 'btn btn-primary btn-block' %>
       </div>
     </div>
   <% end %>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-auto mr-auto">
-          <%= link_to "Forgot Password?", '/accounts/forgot_password' %>
-        </div>
-        <div class="col-auto" id="sign_up">
-          <%= link_to "Don't have an account? Sign up", '/accounts/new' %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
