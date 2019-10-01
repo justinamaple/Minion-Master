@@ -55,7 +55,7 @@
         </ul>
         <% if logged_in? %>
           <span>
-            <%= link_to "Logout", logout_path, method: "post", class: "nav-link" %>
+            <%= button_to "Logout", logout_path, method: "post", class: "btn btn-primary nav-link" %>
           </span>
         <% end %>
           
