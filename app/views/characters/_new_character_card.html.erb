@@ -6,9 +6,9 @@
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control border', type: 'text', placeholder: 'Enter a name' %>
         <%= f.label :race %>
-        <%= f.text_field :race, class: 'form-control border', type: 'text', placeholder: 'Enter a race' %>
+        <%= f.select :race, ["Human", "Plant", "Mutant", "Merloc"], {}, {class: "form-control"} %>
         <%= f.label :gender %>
-        <%= f.text_field :gender, class: 'form-control border', type: 'text', placeholder: 'Enter a gender' %>
+        <%= f.select :gender, ["Male", "Female", "Other"], {}, {class: "form-control"} %>
         <%= button_tag( class: "btn btn-float btn-primary my-1") do %>
           <i class="material-icons">add</i>
         <% end %>            

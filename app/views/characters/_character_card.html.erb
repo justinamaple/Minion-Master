@@ -1,6 +1,6 @@
 <div class="col-lg col-md-5 col-sm-12 card-col">
   <div class="card h-100">
-    <%if character.gender.downcase == 'f' %></h5>
+    <%if character.gender.downcase != 'male' %></h5>
       <%= image_tag "person-girl-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
     <% else %>
       <%= image_tag "person-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>

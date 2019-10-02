@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  before_action :check_login, only: %i[show edit update delete]
   before_action :set_account, only: %i[show edit update delete]
 
   def new
@@ -17,6 +18,10 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def check_login
+    redirect_to accounts_path unless logged_in?
+  end
 
   def set_account
     @account = Account.find(params[:id])

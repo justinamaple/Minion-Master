@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :check_login
   before_action :set_account
 
   def index
@@ -30,6 +31,10 @@ class CharactersController < ApplicationController
   end
 
   private
+
+  def check_login
+    redirect_to accounts_path unless logged_in?
+  end
 
   def set_account
     @account = Account.find(params[:account_id])
