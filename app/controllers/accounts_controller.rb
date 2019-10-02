@@ -1,7 +1,6 @@
 class AccountsController < ApplicationController
-  before_action :check_login, only: %i[show edit update delete]
   before_action :set_account, only: %i[show edit update delete]
-
+  before_action :check_login, only: %i[show edit update delete]
   def new
     @account = Account.new
   end
@@ -20,7 +19,11 @@ class AccountsController < ApplicationController
   private
 
   def check_login
-    redirect_to accounts_path unless logged_in?
+    if !logged_in?
+      redirect_to accounts_path
+    elsif current_user != @account
+      redirect_to current_user
+    end
   end
 
   def set_account

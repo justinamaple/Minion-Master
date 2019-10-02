@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
-  before_action :check_login
   before_action :set_account
+  before_action :check_login
 
   def index
     @characters = @account.characters
@@ -34,6 +34,7 @@ class CharactersController < ApplicationController
 
   def check_login
     redirect_to accounts_path unless logged_in?
+    redirect_to @account unless current_user == @account
   end
 
   def set_account
