@@ -1,10 +1,8 @@
-<% @characters.each do |character| %>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"><%= character.name %></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <%= link_to "Details", account_character_path(@account, character), class: "btn btn-primary" %>
-    </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <% @characters.each do |character| %>
+      <%= render partial: "character_card", locals: { character: character } %>
+    <% end %>
+    <%= render partial: "new_character_card", locals: { account: @account, character: @character } %>
   </div>
-<% end %>
+</div>

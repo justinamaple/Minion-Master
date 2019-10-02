@@ -1,0 +1,18 @@
+<div class="col-lg col-md-5 col-sm-12 card-col">
+  <div class="card h-100">
+    <%= image_tag "anon.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+    <div class="card-body">
+      <%= form_for [account, character] do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control border', type: 'text', placeholder: 'Enter a name' %>
+        <%= f.label :race %>
+        <%= f.text_field :race, class: 'form-control border', type: 'text', placeholder: 'Enter a race' %>
+        <%= f.label :gender %>
+        <%= f.text_field :gender, class: 'form-control border', type: 'text', placeholder: 'Enter a gender' %>
+        <%= button_tag( class: "btn btn-float btn-primary my-1") do %>
+          <i class="material-icons">add</i>
+        <% end %>            
+      <% end %>
+    </div>
+  </div>
+</div>
