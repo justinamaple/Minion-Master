@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   before_action :check_login
 
   def index
-    @characters = @account.characters.order("id DESC")
+    @characters = @account.characters.order("id ASC")
     @character = Character.new
     @character.gender = nil
   end
