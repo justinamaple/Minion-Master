@@ -1,5 +1,12 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <% flash.each do |key, values| %>
+    <% values.each do |value| %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 alert alert-<%= key %>" role="alert"><%= value %></div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="card-deck justify-content-center">
     <% @characters.each do |character| %>
       <%= render partial: "character_card", locals: { character: character } %>
     <% end %>

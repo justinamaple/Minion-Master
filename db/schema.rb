@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_185403) do
     t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "gender", default: "m"
+    t.string "gender", default: "Male"
   end
 
 end

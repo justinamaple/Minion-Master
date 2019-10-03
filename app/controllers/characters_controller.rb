@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   before_action :set_account
+  before_action :set_character, only: %i[edit update destroy]
   before_action :check_login
 
   def index
@@ -17,12 +18,11 @@ class CharactersController < ApplicationController
     @character.account = @account
     @character.level = 1
     if @character.save
-      flash[:primary] = "Character Created!"
-      redirect_to account_characters_path
+      flash[:primary] = ["Character Created!"]
     else
       flash[:secondary] = @character.errors.full_messages
-      redirect_to account_characters_path
     end
+    redirect_to account_characters_path
   end
 
   def show
@@ -30,11 +30,19 @@ class CharactersController < ApplicationController
     @character = @account.characters.find(params[:id])
   end
 
+  def destroy
+    @character.destroy
+    redirect_to account_characters_path
+  end
+
   private
 
   def check_login
-    redirect_to accounts_path unless logged_in?
-    redirect_to @account unless current_user == @account
+    if !logged_in?
+      redirect_to accounts_path 
+    elsif current_user != @account
+      redirect_to @account
+    end
   end
 
   def set_account

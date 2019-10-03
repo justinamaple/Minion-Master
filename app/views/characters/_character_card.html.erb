@@ -1,15 +1,20 @@
-<div class="col-lg col-md-5 col-sm-12 card-col">
-  <div class="card h-100">
-    <%if character.gender.downcase != 'male' %></h5>
-      <%= image_tag "person-girl-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
-    <% else %>
-      <%= image_tag "person-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= character.name %></h5>
-      <h6 class="card-text">Level: <%= character.level %></h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <%= link_to "Details", account_character_path(@account, character), class: "btn btn-primary" %>
+<div class="character-card card">
+  <%if character.gender.downcase != 'male' %></h5>
+    <%= image_tag "person-girl-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+  <% else %>
+    <%= image_tag "person-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= character.name %></h5>
+    <h6 class="card-text">Level: <%= character.level %></h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="row justify-content-between">
+      <div class="col-1">
+        <%= button_to "Info", account_character_path(@account, character), method: "get", class: "btn btn-primary" %>
+      </div>
+      <div class="col-1">
+        <%= button_to "Delete", account_character_path(@account, character), method: "delete", class: "btn btn-secondary delete-btn" %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,18 +1,31 @@
-<div class="col-lg col-md-5 col-sm-12 card-col">
-  <div class="card h-100">
-    <%= image_tag "anon.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
-    <div class="card-body">
-      <%= form_for [account, character] do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control border', type: 'text', placeholder: 'Enter a name' %>
-        <%= f.label :race %>
-        <%= f.select :race, ["Human", "Plant", "Mutant", "Merloc"], {}, {class: "form-control"} %>
-        <%= f.label :gender %>
-        <%= f.select :gender, ["Male", "Female", "Other"], {}, {class: "form-control"} %>
-        <%= button_tag( class: "btn btn-float btn-primary my-1") do %>
-          <i class="material-icons">add</i>
-        <% end %>            
-      <% end %>
-    </div>
+
+<div class="character-card card">
+  <%= image_tag "anon.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+  <div class="card-body">
+    <%= form_for [account, character] do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control border', type: 'text', placeholder: 'Enter a name' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.label :race %>
+          <%= f.select :race, ["Human", "Plant", "Mutant", "Merloc"], {}, {class: "form-control"} %>
+        </div>
+        <div class="col">
+          <%= f.label :gender %>
+          <%= f.select :gender, ["Male", "Female", "Other"], {}, {class: "form-control"} %>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= button_tag( class: "btn btn-float btn-primary create-btn") do %>
+            <i class="material-icons">add</i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -5,15 +5,15 @@
     </div>
   </div>
   <% flash.each do |key, values| %>
-    <div class="row justify-content-center">
-      <% values.each do |value| %>
-        <div class="col-auto alert alert-<%= key %>" role="alert"><%= value %></div>
-      <% end %>
-    </div>
+    <% values.each do |value| %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 alert alert-<%= key %>" role="alert"><%= value %></div>
+      </div>
+    <% end %>
   <% end %>
   <%= form_with model: @account do |f|%>
     <div class="row justify-content-center">
-      <div class="col-md-8">  
+      <div class="col-lg-6 col-md-8 col-sm-12">
         <%= f.label :email %>
         <%= f.text_field :email, 
           class: 'form-control border',
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-8">  
+      <div class="col-lg-6 col-md-8 col-sm-12">
         <%= f.label :password %>
         <%= f.text_field :password,
           class: 'form-control border',
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-8">  
+      <div class="col-lg-6 col-md-8 col-sm-12">
         <%= f.label :password_confirmation %>
         <%= f.text_field :password_confirmation,
           class: 'form-control border',
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-lg-6 col-md-8 col-sm-12">
         <%= f.submit 'Create Account', class: 'btn btn-primary btn-block' %>
       </div>
     </div>

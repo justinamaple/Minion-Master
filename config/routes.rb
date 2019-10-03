@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'accounts#index'
+  root to: 'layouts#index'
   resources :accounts do
     resources :characters
   end

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mining Master</title>
+    <title>Minion Master</title>
+    <%= favicon_link_tag 'monster.png' %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,10 +25,10 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "monster.png", size: "50x50", alt: "Monster Logo", class: "d-inline-block align-top" %>
         Minion Master
-      </a>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,15 +49,15 @@
               <%= link_to "Characters", account_characters_path(current_user), class: "dropdown-item" %>
             </div>
           </li>
-          <% else %>
-          <li class="nav-item active">
-            <%= link_to "Sign In", accounts_path, class: "nav-link" %>
-          </li>
           <% end %>
         </ul>
         <% if logged_in? %>
           <span>
-            <%= button_to "Logout", logout_path, method: "post", class: "btn btn-primary nav-link" %>
+            <%= button_to "Logout", logout_path, method: "post", class: "btn btn-secondary nav-link" %>
+          </span>
+        <% else %>
+          <span>
+            <%= button_to "Sign In", accounts_path, method: "get", class: "btn btn-primary nav-link" %>
           </span>
         <% end %>
           
