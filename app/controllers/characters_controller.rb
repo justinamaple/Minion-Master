@@ -19,6 +19,7 @@ class CharactersController < ApplicationController
     @character.level = 1
     if @character.save
       flash[:primary] = ["Character Created!"]
+      @character.create_equipment
     else
       flash[:secondary] = @character.errors.full_messages
     end
