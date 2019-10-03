@@ -21,7 +21,11 @@ body {
 .character-card {
   // max-width: 302px;
   min-width: 260px;
-  height: 508px;
+  min-height: 508px;
+}
+
+.detail-card {
+  max-width: 600px;
 }
 
 .card-img-top {

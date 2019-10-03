@@ -1,10 +1,10 @@
 class CharactersController < ApplicationController
   before_action :set_account
-  before_action :set_character, only: %i[edit update destroy]
+  before_action :set_character, only: %i[show edit update destroy]
   before_action :check_login
 
   def index
-    @characters = @account.characters
+    @characters = @account.characters.order("id DESC")
     @character = Character.new
     @character.gender = nil
   end
@@ -25,9 +25,9 @@ class CharactersController < ApplicationController
     redirect_to account_characters_path
   end
 
-  def show
-    @account = Account.find(params[:account_id])
-    @character = @account.characters.find(params[:id])
+  def update
+    @character.update(character_params)
+    redirect_to account_characters_path
   end
 
   def destroy
@@ -39,7 +39,7 @@ class CharactersController < ApplicationController
 
   def check_login
     if !logged_in?
-      redirect_to accounts_path 
+      redirect_to accounts_path
     elsif current_user != @account
       redirect_to @account
     end

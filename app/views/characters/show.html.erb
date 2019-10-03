@@ -1,14 +1,39 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <h4><%= @character.name %></h4>
-  </div>
-  <div class="row justify-content-center">
-    <h4><%= @character.level %></h4>
-  </div>
-  <div class="row justify-content-center">
-    <h4><%= @character.race %></h4>
-  </div>
-  <div class="row justify-content-center">
-    <h4><%= @character.gender %></h4>
+<div class="card-deck justify-content-center">
+  <div class="detail-card card">
+    <%if @character.gender.downcase == 'female' %>
+      <%= image_tag "person-girl-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+    <% elsif @character.gender.downcase == 'male' %>
+      <%= image_tag "person-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+    <% else %>
+      <%= image_tag "anonymous.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+    <% end %>
+    <div class="card-body">
+      <%= form_for [@account, @character] do |f| %>
+        <div class="row">
+          <div class="col">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control border', type: 'text'%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.label :race %>
+            <%= f.select :race, ["Human", "Plant", "Mutant", "Merloc"], {}, { class: "form-control" } %>
+          </div>
+          <div class="col">
+            <%= f.label :gender %>
+            <%= f.select :gender, ["Male", "Female", "Other"], {}, { class: "form-control" } %>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-1">
+            <%= button_to "Update", account_character_path(@account, @character), method: "update", class: "btn btn-primary" %>
+          </div>
+          <div class="col-1">
+            <%= button_to "Delete", account_character_path(@account, @character), method: "delete", class: "btn btn-secondary delete-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
