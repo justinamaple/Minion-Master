@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 justin = Account.create(email: "justinamaple@gmail.com", password: "asdf")
-justin.characters.create(name: "Joe", level: 1, race: "Human")
-justin.characters.create(name: "Jenny", level: 1, race: "Human", gender: "Other")
-justin.characters.create(name: "Ham", level: 1, race: "Plant", gender: "Male")
+justin.create_inventory
+joe = justin.characters.create(name: "Joe", level: 1, race: "Human")
+joe.create_equipment
+jenny = justin.characters.create(name: "Jenny", level: 1, race: "Human", gender: "Female")
+jenny.create_equipment
+ham = justin.characters.create(name: "Ham", level: 1, race: "Plant", gender: "Other")
+ham.create_equipment

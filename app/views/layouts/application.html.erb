@@ -37,7 +37,7 @@
           <% if logged_in? %>
             <%= link_to "Profile", current_user, class: "nav-link nav-item" %>
             <%= link_to "Characters", account_characters_path(current_user), class: "nav-link nav-item active" %>
-            <%= link_to "Inventory", 'inventory', class: "nav-link nav-item" %>
+            <%= link_to "Inventory", account_inventory_index_path(current_user), class: "nav-link nav-item" %>
           <% end %>
         </div>
         <% if logged_in? %>

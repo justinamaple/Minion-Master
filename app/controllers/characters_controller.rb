@@ -41,7 +41,7 @@ class CharactersController < ApplicationController
     if !logged_in?
       redirect_to accounts_path
     elsif current_user != @account
-      redirect_to @account
+      redirect_to account_characters_path current_user
     end
   end
 

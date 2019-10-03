@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   root to: 'layouts#index'
   resources :accounts do
+    resources :inventory, only: [:index]
     resources :characters
   end
   post '/login', to: 'authentication#login'

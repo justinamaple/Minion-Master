@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     if @account.save
       flash[:primary] = "Account Created!"
+      @account.inventory.create
       redirect_to @account
     else
       flash[:secondary] = @account.errors.full_messages
