@@ -5,7 +5,7 @@
     <% elsif @character.gender.downcase == 'male' %>
       <%= image_tag "person-outline-filled.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
     <% else %>
-      <%= image_tag "anonymous.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
+      <%= image_tag "anon.png", size: "256x256", alt: "Race Picture", class: "card-img-top mx-auto" %>
     <% end %>
     <div class="card-body">
       <%= form_for [@account, @character] do |f| %>
@@ -13,6 +13,10 @@
           <div class="col">
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control border', type: 'text'%>
+          </div>
+          <div class="col">
+            <%= f.label :level %>
+            <%= f.text_field :level, class: 'form-control border', type: 'text', disabled: true %>
           </div>
         </div>
         <div class="row">
