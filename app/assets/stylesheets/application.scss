@@ -25,8 +25,13 @@ body {
 }
 
 .equipment-card {
-  min-width: 200px;
+  min-width: 180px;
   height: 426px;
+}
+
+.inventory-card {
+  min-width: 200px;
+  height: 340px;
 }
 
 .detail-card {
