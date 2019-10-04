@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'accounts#index'
   resources :accounts, except: [:edit, :destroy] do
-    resources :inventory, only: [:index]
+    resources :inventory, only: [:index] do
+      resources :items, only: [:destroy]
+    end
     resources :characters, except: [:edit]
   end
   post '/login', to: 'authentication#login'

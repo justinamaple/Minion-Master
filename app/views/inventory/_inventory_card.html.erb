@@ -13,7 +13,6 @@
   <div class="card-actions justify-content-between">
     <form method="post" action="/articles/new" class="button_to">
       <div class="dropup">
-      
         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Equip
         </button>
@@ -25,7 +24,7 @@
       </div>
     </form>
     <div>
-      <a class="btn btn-outline-secondary" href="#">Sell</a>
+      <%= button_to "Sell", account_inventory_item_path(@account, @account.inventory, item), class: "btn btn-outline-secondary", method: :delete %>
     </div>
   </div>
 </div>
