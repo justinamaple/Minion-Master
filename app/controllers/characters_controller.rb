@@ -90,6 +90,8 @@ class CharactersController < ApplicationController
 
   def character_items
     items = @character.equipment.items
-    @weapon, @armor, @pet = *items
+    @weapon = items.find_by(slot: "Weapon")
+    @armor = items.find_by(slot: "Armor")
+    @pet = items.find_by(slot: "Pet")
   end
 end

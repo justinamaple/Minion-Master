@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'accounts#index'
+  post '/accounts/:account_id/inventory/:inventory_id/items/:id/characters/:character_id', to: 'items#equip'
   resources :accounts, except: [:edit, :destroy] do
     resources :inventory, only: [:index] do
       resources :items, only: [:destroy]

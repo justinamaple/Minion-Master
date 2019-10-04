@@ -6,6 +6,8 @@
     <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto item-border #{@rarity_color[equipment.rarity]}" %>
   <% when "Pet" %>
     <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto item-border #{@rarity_color[equipment.rarity]}" %>
+  <% else %>
+    <%= image_tag "sack.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto" %>
   <% end %>
   <div class="card-body">
     <h4 class="card-title"><%= equipment.name %></h4>

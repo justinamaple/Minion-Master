@@ -18,7 +18,8 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% @characters.each do |character| %>
-            <a class="dropdown-item" href="characters/<%= character.id %>/equip/<%= item.id %>"><%= character.name %></a>
+            <% url = "/accounts/#{current_user.id}/inventory/#{current_user.inventory.id}/items/#{item.id}/characters/#{character.id}" %>
+            <%= link_to character.name, url, method: :post, class: "dropdown-item" %>
           <% end %>
         </div>
       </div>
