@@ -8,10 +8,23 @@ require 'random_name_generator'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-rng = RandomNameGenerator.new
-lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+@lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+@rng = RandomNameGenerator.new
 justin = Account.create(email: 'justinamaple@gmail.com', password: 'asdf')
 justin.create_inventory
+
+def randomize_equipment(character)
+  character.create_equipment
+  slots = %w[Weapon Armor Pet]
+  slots.each do |slot|
+    character.equipment.items.create(
+      name: @rng.compose(3),
+      slot: slot,
+      rarity: rand(0..4),
+      description: @lorem
+    )
+  end
+end
 
 joe = justin.characters.create(name: 'Joe', level: 1, race: 'Human')
 randomize_equipment(joe)
@@ -24,18 +37,5 @@ randomize_equipment(ham)
 
 slots = %w[Weapon Armor Pet]
 20.times do
-  justin.inventory.items.create(name: rng.compose(3), slot: slots.sample, rarity: rand(0..4), description: lorem)
-end
-
-def randomize_equipment(character)
-  character.create_equipment
-  slots = %w[Weapon Armor Pet]
-  slots.each do |slot|
-    character.equipment.items.create(
-      name: 'Random',
-      slot: slot,
-      rarity: rand(0..4),
-      description: 'None'
-    )
-  end
+  justin.inventory.items.create(name: @rng.compose(3), slot: slots.sample, rarity: rand(0..4), description: @lorem)
 end
