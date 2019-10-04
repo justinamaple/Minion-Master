@@ -1,17 +1,14 @@
 <div class="equipment-card card">
   <% case equipment.slot %>
   <% when "Weapon" %>
-    <%= image_tag "sword.png", size: "180x180", alt: "Weapon Picture", class: "card-img-top mx-auto #{@rarity_color[equipment.rarity]}"  %>
+    <%= image_tag "sword.png", size: "180x180", alt: "Weapon Picture", class: "card-img-top mx-auto item-border #{@rarity_color[equipment.rarity]}"  %>
   <% when "Armor" %>
-    <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto #{@rarity_color[equipment.rarity]}" %>
+    <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto item-border #{@rarity_color[equipment.rarity]}" %>
   <% when "Pet" %>
-    <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto #{@rarity_color[equipment.rarity]}" %>
+    <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto item-border #{@rarity_color[equipment.rarity]}" %>
   <% end %>
   <div class="card-body">
     <h4 class="card-title"><%= equipment.name %></h4>
     <p class="card-text"><%= equipment.description %></p>
-  </div>
-  <div class="card-actions">
-    <a class="btn btn-outline-primary" href="#">Un-Equip</a>
   </div>
 </div>

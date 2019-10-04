@@ -3,6 +3,11 @@ require 'random_name_generator'
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[show edit update delete]
   before_action :check_login, only: %i[show edit update delete]
+
+  def index
+    redirect_to current_user if logged_in?
+  end
+
   def new
     @account = Account.new
   end
@@ -43,7 +48,7 @@ class AccountsController < ApplicationController
 
     @account.create_inventory
     slots = %w[Weapon Armor Pet]
-    20.times do
+    5.times do
       @account.inventory.items.create(name: rng.compose(3), slot: slots.sample, rarity: rand(0..4), description: lorem)
     end
   end

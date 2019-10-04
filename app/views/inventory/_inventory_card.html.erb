@@ -1,17 +1,31 @@
 <div class="inventory-card card">
   <% case item.slot %>
   <% when "Weapon" %>
-    <%= image_tag "sword.png", size: "180x180", alt: "Weapon Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+    <%= image_tag "sword.png", size: "180x180", alt: "Weapon Picture", class: "card-img-top mx-auto item-border #{@rarity_color[item.rarity]} " %>
   <% when "Armor" %>
-    <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+    <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto item-border #{@rarity_color[item.rarity]} " %>
   <% when "Pet" %>
-    <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+    <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto item-border #{@rarity_color[item.rarity]} " %>
   <% end %>
   <div class="card-body">
-    <h4 class="card-title"><%= item.name %></h4>
+    <h4 class="card-title text-center"><%= item.name %></h4>
   </div>
-    <div class="card-actions justify-content-between">
-    <a class="btn btn-outline-primary" href="#">Equip</a>
-    <a class="btn btn-outline-secondary" href="#">Sell</a>
+  <div class="card-actions justify-content-between">
+    <form method="post" action="/articles/new" class="button_to">
+      <div class="dropup">
+      
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Equip
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% @characters.each do |character| %>
+            <a class="dropdown-item" href="characters/<%= character.id %>/equip/<%= item.id %>"><%= character.name %></a>
+          <% end %>
+        </div>
+      </div>
+    </form>
+    <div>
+      <a class="btn btn-outline-secondary" href="#">Sell</a>
+    </div>
   </div>
 </div>

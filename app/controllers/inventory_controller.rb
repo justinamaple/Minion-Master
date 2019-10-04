@@ -4,12 +4,13 @@ class InventoryController < ApplicationController
 
   def index
     @inventory = current_user.inventory
+    @characters = current_user.characters
     @rarity_color = {
-      0 => 'border border-dark',
-      1 => 'border border-success',
-      2 => 'border border-info',
-      3 => 'border border-primary',
-      4 => 'border border-danger'
+      0 => 'border-dark',
+      1 => 'border-success',
+      2 => 'border-info',
+      3 => 'border-primary',
+      4 => 'border-danger'
     }
   end
 
