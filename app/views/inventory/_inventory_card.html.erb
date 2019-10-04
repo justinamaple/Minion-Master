@@ -1,12 +1,17 @@
 <div class="inventory-card card">
-  <%= image_tag "sack.png", size: "140x140", alt: "Race Picture", class: "card-img-top mx-auto" %>
+  <% case item.slot %>
+  <% when "Weapon" %>
+    <%= image_tag "sword.png", size: "180x180", alt: "Weapon Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+  <% when "Armor" %>
+    <%= image_tag "armor.png", size: "180x180", alt: "Armor Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+  <% when "Pet" %>
+    <%= image_tag "cat.png", size: "180x180", alt: "Pet Picture", class: "card-img-top mx-auto #{@rarity_color[item.rarity]}" %>
+  <% end %>
   <div class="card-body">
-    <h4 class="card-title">Item Name</h4>
-    <p class="card-text">Ooh look a shiny item!</p>
+    <h4 class="card-title"><%= item.name %></h4>
   </div>
-  <div class="card-actions justify-content-between">
+    <div class="card-actions justify-content-between">
     <a class="btn btn-outline-primary" href="#">Equip</a>
     <a class="btn btn-outline-secondary" href="#">Sell</a>
-
   </div>
 </div>

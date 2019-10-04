@@ -1,3 +1,5 @@
+require 'random_name_generator'
+
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[show edit update delete]
   before_action :check_login, only: %i[show edit update delete]
@@ -9,7 +11,7 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     if @account.save
       flash[:primary] = "Account Created!"
-      @account.create_inventory
+      generate_inventory
       redirect_to @account
     else
       flash[:secondary] = @account.errors.full_messages
@@ -33,5 +35,16 @@ class AccountsController < ApplicationController
 
   def account_params
     params.require(:account).permit(:email, :password, :password_confirmation)
+  end
+
+  def generate_inventory
+    lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+    rng = RandomNameGenerator.new
+
+    @account.create_inventory
+    slots = %w[Weapon Armor Pet]
+    20.times do
+      @account.inventory.items.create(name: rng.compose(3), slot: slots.sample, rarity: rand(0..4), description: lorem)
+    end
   end
 end

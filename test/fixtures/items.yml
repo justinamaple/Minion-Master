@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  slot: MyString
+  rarity: 1
+  description: MyString
+  inside_id: 1
+  inside_type: MyString
+
+two:
+  name: MyString
+  slot: MyString
+  rarity: 1
+  description: MyString
+  inside_id: 1
+  inside_type: MyString

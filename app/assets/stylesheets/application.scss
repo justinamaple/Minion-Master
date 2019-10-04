@@ -18,6 +18,14 @@ body {
   background-position: center;
 }
 
+img {
+  padding: 4px;
+}
+
+.border {
+  border: 2px;
+}
+
 .character-card {
   max-width: 546px;
   min-width: 260px;
@@ -26,7 +34,7 @@ body {
 
 .equipment-card {
   min-width: 180px;
-  height: 426px;
+  min-height: 426px;
 }
 
 .inventory-card {

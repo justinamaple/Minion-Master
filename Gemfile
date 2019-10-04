@@ -29,6 +29,8 @@ gem 'material-sass', '4.1.1'
 gem 'material_icons'
 gem 'jquery-rails'
 
+gem 'random_name_generator'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

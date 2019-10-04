@@ -2,6 +2,17 @@ class InventoryController < ApplicationController
   before_action :set_account
   before_action :check_login
 
+  def index
+    @inventory = current_user.inventory
+    @rarity_color = {
+      0 => 'border border-dark',
+      1 => 'border border-success',
+      2 => 'border border-info',
+      3 => 'border border-primary',
+      4 => 'border border-danger'
+    }
+  end
+
   private
 
   def check_login

@@ -42,15 +42,21 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-7 col-md-8 col-sm-12">
+  <div class="col-lg-7 col-md-8 col-sm-12 ">
     <h3>Equipment</h3>
-    <div class="row">
-      <% 3.times do %>
-        <div class="col">
-          <h5> Slot Name </h5>
-          <%= render partial: "equipment_card" %>
-        </div>
-      <% end %>
+    <div class="row justify-content-center">
+      <div class="col-lg col-md col-sm-8">
+        <h5> Weapon </h5>
+        <%= render partial: "equipment_card", locals: { equipment: @weapon } %>
+      </div>
+      <div class="col-lg col-md col-sm-8">
+        <h5> Armor </h5>
+        <%= render partial: "equipment_card", locals: { equipment: @armor } %>
+      </div>
+      <div class="col-lg col-md col-sm-8">
+        <h5> Pet </h5>
+        <%= render partial: "equipment_card", locals: { equipment: @pet } %>
+      </div>
     </div>
   </div>
 </div>
